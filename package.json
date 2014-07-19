@@ -6,10 +6,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jeremykao/youplusplus.git"
-  }
+  },
   "dependencies": {
     "hapi": "^6.2.0",
-    "mongoose": ">=0.8.0"
+    "mongoose": ">=0.8.0",
+    "mongoose-auto-increment": ">=0.8.0"
   },
   "license": "MIT",
   "engines": {

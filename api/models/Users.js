@@ -19,13 +19,9 @@ module.exports = function(database){
   usersSchema.plugin(autoincrement.plugin, {model: 'Users', field: 'uid', startAt: 1, incrementBy: 1});
   var Users = mongoose.model('Users', usersSchema);
 
-  Users.newUser = function(newUser){
+  Users.newUser = function(newUser, callback){
     var user = new Users(newUser);
-    user.save(function(err){
-      if (err){
-        console.error.bind(err, 'adding new user error:')
-      }
-    });
+    user.save(callback);
   };
 
   Users.getUser = function(uid, callback){

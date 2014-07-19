@@ -22,13 +22,9 @@ module.exports = function(database){
   challengesSchema.plugin(autoincrement.plugin, {model: 'Challenges', field: 'cid', startAt: 1, incrementBy: 1});
   var Challenges = mongoose.model('Challenges', challengesSchema);
 
-  Challenges.newChallenge = function(newChallenge){
+  Challenges.newChallenge = function(newChallenge, callback){
     var challenge = new Challenges(newChallenge);
-    challenge.save(function(err){
-      if (err){
-        console.error.bind(err, 'adding new user error:')
-      }
-    });
+    challenge.save(callback);
   };
 
   Challenges.getChallenge = function(cid, callback){

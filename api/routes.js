@@ -54,38 +54,57 @@ module.exports = [
 
 ];
 
+//called on GET: /
 function defaultFunc(request, reply){
   reply("Yup, you just hit the You++ API.");
 }
 
+//called on GET: /users
 function getAllUsers(request, reply){
   Users.getAllUsers(function(err, users){
     reply(users);
   })
 }
+
+//called on POST: /users
 function createUser(request, reply){
-  Users.newUser(request.params.newUser);
+  Users.newUser(request.params.newUser, function(err, user){
+    if (err){
+      console.error.bind(err, "error when inserting new user into db: ");
+    }
+    else{
+      reply(user);
+    }
+  });
 }
+//called on GET: /users/{uid}
 function getSingleUser(request, reply){
   Users.getUser(request.params.uid, function(err, user){
     reply(user);
   });
 }
+
+//called on GET: /challenges
 function getAllChallenges(request, reply){
   Challenges.getAllChallenges(function(err, challenges){
     reply(challenges);
   })
 }
+
+//called on POST: /challenges
 function createChallenge(request, reply){
-  Challenges.newChallenge(request.params.newChallenge);
+  Challenges.newChallenge(request.params.newChallenge, function(err, challenge){
+    if (err){
+      console.error.bind(err, "error when inserting new user into db: ");
+    }
+    else{
+      reply(challenge);
+    }
+  });
 }
+//called on GET: /challenges/{cid}
 function getSingleChallenge(request, reply){
   Challenges.getChallenge(request.params.cid, function(err, challenge){
     reply(challenge);
-  });
-}
-function test(request, reply){
-  Users.getAllUsers(function(err, users){
-    reply(users);
   });
 }

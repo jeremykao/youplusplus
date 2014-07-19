@@ -1,7 +1,12 @@
 {
-  "name": "tim-howard",
+  "name": "youplusplus",
   "version": "0.0.1",
   "description": "Greylock Hackathon app - tracks goals and allows you to compete with others.",
+  "main": "api/server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremykao/youplusplus.git"
+  }
   "dependencies": {
     "hapi": "^6.2.0",
     "mongoose": ">=0.8.0"

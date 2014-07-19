@@ -1,5 +1,5 @@
 //routes.js
-var Types = require('hapi').Types;
+var Joi = require('joi');
 var mongoose = require('mongoose');
 
 /*** Open DB Connection ***/
@@ -13,6 +13,7 @@ db.once('open', function(){
 /*** Models ***/
 var Users = require('./models/Users')(db);
 var Challenges = require('./models/Challenges')(db);
+var ChallengeData = require('./models/ChallengeData')(db);
 
 /*** Routes ***/
 module.exports = [
@@ -50,6 +51,22 @@ module.exports = [
     path: '/challenges/{cid}',
     method: 'GET',
     handler: getSingleChallenge
+  },
+  {
+    path: '/events',
+    method: 'GET',
+    config: {
+      handler: getEvents,
+      validate: {
+        query: {
+          uid: Joi.number(),
+          cid: Joi.number(),
+          date: Joi.date(),
+          startDate: Joi.number(),
+          endDate: Joi.number()
+        }
+      }
+    }
   }
 
 ];
@@ -80,14 +97,16 @@ function createUser(request, reply){
 //called on GET: /users/{uid}
 function getSingleUser(request, reply){
   Users.getUser(request.params.uid, function(err, user){
-    reply(user);
+    if (!err)
+      reply(user);
   });
 }
 
 //called on GET: /challenges
 function getAllChallenges(request, reply){
   Challenges.getAllChallenges(function(err, challenges){
-    reply(challenges);
+    if (!err)
+      reply(challenges);
   })
 }
 
@@ -105,6 +124,14 @@ function createChallenge(request, reply){
 //called on GET: /challenges/{cid}
 function getSingleChallenge(request, reply){
   Challenges.getChallenge(request.params.cid, function(err, challenge){
-    reply(challenge);
+    if (!err)
+      reply(challenge);
+  });
+}
+//called on GET: /events?...
+function getEvents(request, reply){
+  ChallengeData.getAllChallengesByFilter(request.query, function(err, response){
+    if (!err)
+      reply(response);
   });
 }

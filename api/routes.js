@@ -12,6 +12,7 @@ db.once('open', function(){
 
 /*** Models ***/
 var Users = require('./models/Users')(db);
+var Challenges = require('./models/Challenges')(db);
 
 /*** Routes ***/
 module.exports = [
@@ -34,7 +35,23 @@ module.exports = [
     path: '/users/{uid}',
     method: 'GET',
     handler: getSingleUser
+  },
+  {
+    path: '/challenges',
+    method: 'GET',
+    handler: getAllChallenges
+  },
+  {
+    path: '/challenges',
+    method: 'POST',
+    handler: createChallenge
+  },
+  {
+    path: '/challenges/{cid}',
+    method: 'GET',
+    handler: getSingleChallenge
   }
+
 ];
 
 function defaultFunc(request, reply){
@@ -52,6 +69,19 @@ function createUser(request, reply){
 function getSingleUser(request, reply){
   Users.getUser(request.params.uid, function(err, user){
     reply(user);
+  });
+}
+function getAllChallenges(request, reply){
+  Challenges.getAllChallenges(function(err, challenges){
+    reply(challenges);
+  })
+}
+function createChallenge(request, reply){
+  Challenges.newChallenge(request.params.newChallenge);
+}
+function getSingleChallenge(request, reply){
+  Challenges.getChallenge(request.params.cid, function(err, challenge){
+    reply(challenge);
   });
 }
 function test(request, reply){

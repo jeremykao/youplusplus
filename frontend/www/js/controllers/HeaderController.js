@@ -3,8 +3,8 @@
 yppApp.controller('HeaderController', ['$scope', '$window', function($scope, $window) {
   $scope.helloWorld = 'Hello World!';
 
-  $scope.addEvent = function(){
-    $window.location.href="/#/addEvent";
+  $scope.inputEvent = function(){
+    $window.location.href="/#/inputEvent";
   };
   $scope.createChallenge = function(){
     $window.location.href="/#/createChallenge";

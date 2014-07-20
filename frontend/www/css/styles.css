@@ -39,6 +39,10 @@ body {
 #createChallengeView textarea {
   height: 8rem;
 }
+#dashboardView h2 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
 #dashboardView ul {
   list-style: none;
   padding: 0;

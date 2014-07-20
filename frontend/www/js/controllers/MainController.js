@@ -4,14 +4,14 @@ yppApp.controller('MainController', ['$window', '$scope', 'UsersResource', 'User
   $scope.helloWorld = 'Hello World!';
   $scope.tmpUid = 1;
   $scope.user = UserService.fullName();
-  $scope.uid = UserService.user.uid;
+  $scope.uid = UserService.getUid();
 
   $scope.initialize = function(){
     if($scope.uid === 0){
       UsersResource.fetchUser({uid: $scope.tmpUid}, function(response){
         UserService.save(response.data[0]);
         $scope.user = UserService.fullName();
-        $scope.uid = UserService.user.uid;
+        $scope.uid = UserService.getUid();
         UserChallengeResource.fetchUserChallenges({uid: $scope.uid}, function(response){
          $scope.challenges = response.data;
         });

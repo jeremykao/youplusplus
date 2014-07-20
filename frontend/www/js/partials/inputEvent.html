@@ -1,5 +1,19 @@
-<div class="row" id="inputEvent">
-  <h2>{{Challenge}}</h2>
-  <p><input type="text" placeholder="#" data-ng-model="eventObj.data" />{{metric}}</p>
+<div class="col-md-10" id="inputEvent">
+  <div class="row">
+    <h2>Hooray for Progress!</h2>
+  </div>
+  <div class="row">
+    <select data-ng-model="eventObj.challengeId" data-ng-options="option.cid as option.name for option in challengeOptions"></select>
+  </div>
+  <div class="row">
+    <input type="text" placeholder="#" data-ng-model="eventObj.data" />{{metric}}
+  </div>
+  <div class="row">
+    <h4>Add Details</h4>
+    <textarea placeholder="Description" data-ng-model="eventObj.description"></textarea>
+  </div>
+  <div class="row">
+    <button class="btn btn-default btn-large" type="button" data-ng-click="submitEvent">Log it!</button>
+  </div>
 
 </div>

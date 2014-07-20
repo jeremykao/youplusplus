@@ -96,7 +96,7 @@ function getAllUsers(request, reply){
 
 //called on POST: /users
 function createUser(request, reply){
-  Users.newUser(request.params.newUser, function(err, user){
+  Users.newUser(request.payload, function(err, user){
     if (err){
       console.error.bind(console, "error when inserting new user into db: ");
     }
@@ -123,7 +123,8 @@ function getAllChallenges(request, reply){
 
 //called on POST: /challenges
 function createChallenge(request, reply){
-  Challenges.newChallenge(request.params.newChallenge, function(err, challenge){
+  console.log(request);
+  Challenges.newChallenge(request.payload, function(err, challenge){
     if (err){
       console.error.bind(console, "error when inserting new user into db: ");
     }

@@ -5,6 +5,10 @@ yppApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
     .when('/', {
+      templateUrl: 'js/partials/login.html',
+      controller: 'LoginController'
+    })
+    .when('/dashboard', {
       templateUrl: 'js/partials/main.html',
       controller: 'MainController'
     })

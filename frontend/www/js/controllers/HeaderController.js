@@ -3,6 +3,9 @@
 yppApp.controller('HeaderController', ['$scope', '$window', function($scope, $window) {
   $scope.helloWorld = 'Hello World!';
 
+  $scope.backToHome = function(){
+    $window.location.href="/#/";
+  }
   $scope.inputEvent = function(){
     $window.location.href="/#/inputEvent";
   };

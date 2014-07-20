@@ -16,6 +16,10 @@ yppApp.config(['$routeProvider',
       templateUrl: 'js/partials/createChallenge.html',
       controller: 'CreateChallengeController'
     })
+    .when('/challenges/:cid', {
+      templateUrl: 'js/partials/challenge.html',
+      controller: 'ChallengeController'
+    })
   }
 ]);
 

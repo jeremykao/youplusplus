@@ -20,8 +20,8 @@ yppApp.controller('MainController', ['$window', '$scope', 'UsersResource', 'User
   };
 
   $scope.goToChallenge = function(cid){
-    console.log("/#/challenges/" + cid);
-    //$window.location.href = "/#/challenges/" + cid;
+    //console.log("/#/challenges/" + cid);
+    $window.location.href = "/#/challenges/" + cid;
   };
 
   $scope.$watch('uid', function(){

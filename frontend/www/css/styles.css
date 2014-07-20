@@ -39,7 +39,8 @@ body {
 #createChallengeView textarea {
   height: 8rem;
 }
-#dashboardView h2 {
+#dashboardView h2,
+#dashboardView h4 {
   margin-left: 2rem;
   margin-right: 2rem;
 }
@@ -75,4 +76,40 @@ body {
 }
 #inputEvent .row {
   margin-top: 2rem;
+}
+#challenge h1,
+#challenge h4,
+#challenge p {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+#challenge .description {
+  font-size: 2rem;
+}
+#challenge ul {
+  list-style: none;
+  padding: 0;
+}
+#challenge li {
+  font-size: 2.5rem;
+  border-top: 1px solid #000;
+  text-align: center;
+  padding: 1.2rem 0;
+}
+#challenge li:last-child {
+  border-bottom: 1px solid #000;
+}
+#challenge .dateBlock {
+  float: left;
+  width: 2.5rem;
+  word-wrap: break-word;
+}
+#challenge .dateBlock .month {
+  font-size: 1rem;
+}
+#challenge .dateBlock .day {
+  font-size: 2rem;
+}
+#challenge .metric {
+  font-size: 4rem;
 }

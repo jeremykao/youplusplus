@@ -1,5 +1,5 @@
 //InputEventController.js
-yppApp.controller('InputEventController', ['$scope', 'UserService', 'UserChallengeResource', function($scope, UserService, UserChallengeResource){
+yppApp.controller('InputEventController', ['$scope', 'UserService', 'UserChallengeResource', 'ChallengeDataResource', '$window', function($scope, UserService, UserChallengeResource, ChallengeDataResource, $window){
   $scope.eventObj = {
     userId: 0,
     challengeId: "",
@@ -28,6 +28,8 @@ yppApp.controller('InputEventController', ['$scope', 'UserService', 'UserChallen
   $scope.eventObj.userId = UserService.getUid();
 
   $scope.submitEvent = function(){
-    console.log($scope.eventObj);
+    ChallengeDataResource.createEvent($scope.eventObj, function(response){
+      $window.location.href='/#/';
+    });
   };
 }]);

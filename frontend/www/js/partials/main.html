@@ -2,8 +2,12 @@
   <div class="row">
     <h2>{{user}}: Your Personal Dashboard</h2>
   </div>
-  <div class="row">
+  <div class="row" data-ng-show="challenges">
     <h2>Challenges:</h2>
+  </div>
+  <div class="row" data-ng-hide="challenges">
+    <h4>You don't have any challenges. Add one by clicking the <span class="glyphicon glyphicon-plus"></span> icon.</h4>
+    <h4>Update your progress with the <span class="glyphicon glyphicon-edit"></span> icon</h4>
   </div>
     <ul>
       <li data-ng-repeat="challenge in challenges"  data-ng-click="goToChallenge({{challenge.cid}})" class="row">{{challenge.name}}</li>

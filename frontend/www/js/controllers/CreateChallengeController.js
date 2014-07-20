@@ -7,7 +7,7 @@ yppApp.controller('CreateChallengeController', ['$scope', 'ChallengesResource', 
       var params = _.extend($scope.challengeForm, {participants: [UserService.getUid()]});
       console.log(params);
       ChallengesResource.createChallenge(params, function(response){
-        $window.location.href="/#/";
+        $window.location.href="/#/dashboard";
       });
     }
   };

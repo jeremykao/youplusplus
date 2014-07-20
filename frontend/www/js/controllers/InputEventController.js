@@ -29,7 +29,7 @@ yppApp.controller('InputEventController', ['$scope', 'UserService', 'UserChallen
 
   $scope.submitEvent = function(){
     ChallengeDataResource.createEvent($scope.eventObj, function(response){
-      $window.location.href='/#/';
+      $window.location.href='/#/dashboard';
     });
   };
 }]);

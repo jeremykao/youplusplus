@@ -2,13 +2,12 @@
 
 yppApp.controller('MainController', ['$window', '$scope', 'UsersResource', 'UserService', 'UserChallengeResource', function($window, $scope, UsersResource, UserService, UserChallengeResource) {
   $scope.helloWorld = 'Hello World!';
-  $scope.tmpUid = 1;
   $scope.user = UserService.fullName();
   $scope.uid = UserService.getUid();
 
   $scope.initialize = function(){
     if($scope.uid === 0){
-      UsersResource.fetchUser({uid: $scope.tmpUid}, function(response){
+      UsersResource.fetchUser({uid: $scope.uid}, function(response){
         UserService.save(response.data[0]);
         $scope.user = UserService.fullName();
         $scope.uid = UserService.getUid();

@@ -13,7 +13,7 @@ module.exports = function(database){
     lname: String,
     oauthProvider: [String],
     oauthUid: [String],
-    challenges: [Number],
+    challenges: [{type: Number, ref: 'Challenges'}]
   });
 
   usersSchema.plugin(autoincrement.plugin, {model: 'Users', field: 'uid', startAt: 1, incrementBy: 1});
@@ -25,16 +25,24 @@ module.exports = function(database){
   };
 
   Users.getUser = function(uid, callback){
-    return Users.find({'uid': uid}, callback);
+    return Users.find({'uid': uid}).exec(callback);
   };
 
   Users.getAllUsers = function(callback){
     return Users.find({}, callback);
   };
 
-  Users.removeAllUsers = function(callback){
+  Users.removeAllUsers = function(){
     //Users.resetCount();
-    Users.remove()
+    Users.remove({});
+  }
+  Users.updateUser = function(uid, updateParams, callback){
+    var updateQuery = {};
+    if(updateParams.cid)
+      updateQuery['$push'] = {'challenges': updateParams.cid};
+    Users.update({'uid': uid}, updateQuery, function(err, response){
+      console.log(response);
+    });
   }
   return Users;
 };

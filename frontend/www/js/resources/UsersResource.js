@@ -6,6 +6,7 @@ yppApp.factory('UsersResource', ['$resource', function($resource){
     {
       fetchUsers: {method: 'GET'},
       fetchUser: {method: 'GET'},
-      createUser: {method: 'POST'}
+      createUser: {method: 'POST'},
+      updateUser: {method: 'PUT'}
     });
 }]);

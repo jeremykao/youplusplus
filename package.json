@@ -11,7 +11,8 @@
     "hapi": "^6.2.0",
     "mongoose": ">=0.8.0",
     "mongoose-auto-increment": ">=0.8.0",
-    "joi": ">=0.8.0"
+    "joi": ">=0.8.0",
+    "underscore": ">=0.8.0"
   },
   "devDependencies":{
     "less": ">=0.8.0"

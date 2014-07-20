@@ -36,7 +36,7 @@ module.exports = function(database){
   };
 
   Challenges.removeAllChallenges = function(callback){
-    Challenges.remove({}, callback);
+    Challenges.remove({});
   }
 
   return Challenges;

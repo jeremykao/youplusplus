@@ -1,6 +1,7 @@
 //routes.js
 var Joi = require('joi');
 var mongoose = require('mongoose');
+var underscore = require('underscore');
 
 /*** Open DB Connection ***/
 mongoose.connect('mongodb://localhost/youplusplus');
@@ -38,6 +39,11 @@ module.exports = [
     handler: getSingleUser
   },
   {
+    path: '/users/{uid}',
+    method: 'PUT',
+    handler: updateUser
+  },
+  {
     path: '/challenges',
     method: 'GET',
     handler: getAllChallenges
@@ -51,6 +57,11 @@ module.exports = [
     path: '/challenges/{cid}',
     method: 'GET',
     handler: getSingleChallenge
+  },
+  {
+    path: '/users/{uid}/challenges',
+    method: 'GET',
+    handler: getUserChallenges
   },
   {
     path: '/events',
@@ -108,11 +119,27 @@ function createUser(request, reply){
 //called on GET: /users/{uid}
 function getSingleUser(request, reply){
   Users.getUser(request.params.uid, function(err, user){
-    if (!err)
+    if (!err){
+
+      // var challengesArr = user[0].challenges;
+      // underscore.extend(user, {challengeObjs: []});
+      // for (var i = 0; i < challengesArr.length; ++i){
+      //   Challenges.getChallenge(challengesArr[i], function(err, challenge){
+      //     user.challengeObjs.push(challenge[0]);
+      //     console.log(user);
+      //   });
+      // }
       reply({data: user});
+    }
   });
 }
 
+//called on PUT: /users/{uid}
+function updateUser(request, reply){
+  Users.updateUser(request.params.uid, request.payload, function(err, response){
+    reply(response);
+  });
+};
 //called on GET: /challenges
 function getAllChallenges(request, reply){
   Challenges.getAllChallenges(function(err, challenges){
@@ -123,12 +150,17 @@ function getAllChallenges(request, reply){
 
 //called on POST: /challenges
 function createChallenge(request, reply){
-  console.log(request);
   Challenges.newChallenge(request.payload, function(err, challenge){
     if (err){
       console.error.bind(console, "error when inserting new user into db: ");
     }
     else{
+      // var challengeId = challenge.cid;
+      // var participantsArr = challenge.participants;
+      // console.log(participantsArr);
+      // for (var i = 0; i < participantsArr.length; ++i){
+      //   Users.updateUser(participantsArr[i], {cid: challengeId});
+      // }
       reply({data: challenge});
     }
   });
@@ -148,11 +180,21 @@ function getEvents(request, reply){
   });
 }
 
+//called on GET: /user/{uid}/challenges
+function getUserChallenges(request, reply){
+  Challenges.find({participants: {$in: [request.params.uid]}}, function(err, response){
+    if (!err)
+      reply({data: response});
+  });
+}
+
 //called on GET /reset
 function reset(request, reply){
-  Users.removeAllUsers();
-  Challenges.removeAllChallenges();
-  ChallengeData.removeAllData();
+  //db.db.dropDatabase();
+   db.collections['identitycounters'].update({}, {count: 0});
+   db.collections['users'].drop();
+   db.collections['challenges'].drop();
+   db.collections['challengedatas'].drop();
 }
 
 //called on GET /populate

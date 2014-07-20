@@ -42,7 +42,7 @@ module.exports = function(database){
   };
 
   ChallengeData.removeAllData = function(callback){
-    ChallengeData.remove({}, callback);
+    ChallengeData.remove({});
   }
   return ChallengeData;
 };

@@ -1,6 +1,12 @@
 <div class="col-md-10" id="dashboardView" data-ng-init="initialize()">
   <div class="row">
-    <h2>{{user}}</h2>
-    <h2>{{uid}}</h2>
+    <h2>Hi {{user}}</h2>
+  </div>
+  <div class="row">
+    <h2>Challenges:</h2>
+  </div>
+    <ul>
+      <li data-ng-repeat="challenge in challenges"  data-ng-click="goToChallenge({{challenge.cid}})" class="row">{{challenge.name}}</li>
+    </ul>
   </div>
 </div>

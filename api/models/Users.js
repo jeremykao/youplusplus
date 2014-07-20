@@ -13,7 +13,7 @@ module.exports = function(database){
     lname: String,
     oauthProvider: [String],
     oauthUid: [String],
-    challenges: [{type: Number, ref: 'Challenges'}]
+    challenges: [Number]
   });
 
   usersSchema.plugin(autoincrement.plugin, {model: 'Users', field: 'uid', startAt: 1, incrementBy: 1});

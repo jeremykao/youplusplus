@@ -8,9 +8,9 @@ yppApp.config(['$routeProvider',
       templateUrl: 'js/partials/main.html',
       controller: 'MainController'
     })
-    .when('/addEvent', {
-      templateUrl: 'js/partials/addEvent.html',
-      controller: 'AddEventController'
+    .when('/inputEvent', {
+      templateUrl: 'js/partials/inputEvent.html',
+      controller: 'InputEventController'
     })
   }
 ]);

@@ -1,17 +1,15 @@
 //MainController.js
 
-yppApp.controller('MainController', ['$scope', 'UsersResource', function($scope, UsersResource) {
+yppApp.controller('MainController', ['$scope', 'UsersResource', 'UserService', function($scope, UsersResource, UserService) {
   $scope.helloWorld = 'Hello World!';
   $scope.tmpUid = 1;
+  $scope.user = UserService.fullName();
 
   $scope.initialize = function(){
-    UsersResource.fetchUser({uid: $scope.tmpUid}, function(err, response){
-      if (err){
-        console.error.bind(console, 'MainController::Initialize()::' , err);
-      }
-      else{
-        console.log(response);
-      }
+    UsersResource.fetchUser({uid: $scope.tmpUid}, function(response){
+      UserService.save(response.data[0]);
+      $scope.user = UserService.fullName();
+      $scope.uid = UserService.user.uid;
     });
   };
   // StallsResource.fetchStalls({}, function(response){

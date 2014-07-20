@@ -1,1 +1,1 @@
-web: python -m SimpleHTTPServer 1234
+web: node app2.js

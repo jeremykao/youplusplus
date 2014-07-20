@@ -54,3 +54,25 @@ body {
   text-align: center;
   padding: 1.2rem 0;
 }
+#inputEvent {
+  margin: auto 2rem;
+  font-size: 2rem;
+}
+#inputEvent input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #000;
+}
+#inputEvent input:focus,
+#inputEvent textarea:focus {
+  outline: 0;
+}
+#inputEvent textarea {
+  height: 8rem;
+}
+#inputEvent .metricField {
+  width: 10rem;
+}
+#inputEvent .row {
+  margin-top: 2rem;
+}

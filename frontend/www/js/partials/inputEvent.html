@@ -3,17 +3,17 @@
     <h2>Hooray for Progress!</h2>
   </div>
   <div class="row">
-    <select data-ng-model="eventObj.challengeId" data-ng-options="option.cid as option.name for option in challengeOptions"></select>
+    <label>Select a Challenge: <select data-ng-model="eventObj.challengeId" data-ng-options="option.cid as option.name for option in challengeOptions"></select></label>
   </div>
-  <div class="row">
-    <input type="text" placeholder="#" data-ng-model="eventObj.data" />{{metric}}
+  <div class="row" data-ng-show="selectedChallenge">
+    <input type="text" placeholder="#" data-ng-model="eventObj.data" class="metricField" />{{metric}}
   </div>
-  <div class="row">
+  <div class="row" data-ng-show="selectedChallenge">
     <h4>Add Details</h4>
     <textarea placeholder="Description" data-ng-model="eventObj.description"></textarea>
   </div>
-  <div class="row">
-    <button class="btn btn-default btn-large" type="button" data-ng-click="submitEvent">Log it!</button>
+  <div class="row" data-ng-show="selectedChallenge">
+    <button class="btn btn-default btn-large" type="button" data-ng-click="submitEvent()">Log it!</button>
   </div>
 
 </div>

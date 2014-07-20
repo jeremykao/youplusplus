@@ -18,7 +18,7 @@
     <input type="password" data-ng-model="signup.password" placeholder="Password" /> 
   </div>
   <div class="row" data-ng-show="clickedButton && !isSigningUp">
-    <button type="button" class="btn btn-default btn-large" data-ng-click="loginUser">Login</button>
+    <button type="button" class="btn btn-default btn-large" data-ng-click="loginUser()">Login</button>
   </div>
   <div class="row" data-ng-show="clickedButton && isSigningUp">
     <button type="button" class="btn btn-default btn-large" data-ng-click="createUser()">Create Account</button>

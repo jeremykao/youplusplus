@@ -24,8 +24,9 @@ yppApp.controller("LoginController", ['$scope', 'UsersResource', 'UserService', 
 
   $scope.loginUser = function(){
     UsersResource.fetchUsers({email: $scope.login.email, password: $scope.login.password}, function(response){
-      if (response.data.uid){
-        UserService.save(response.data);
+      console.log($scope.login, response);
+      if (response.data[0].uid){
+        UserService.save(response.data[0]);
         $window.location.href="/#/dashboard";
       }
     });

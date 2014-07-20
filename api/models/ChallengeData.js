@@ -10,13 +10,14 @@ module.exports = function(database){
   var challengeDataSchema = new Schema({
     userId: Number,
     challengeId: Number,
+    data: Number,
     description: String,
     date: Date
   });
 
   var ChallengeData = mongoose.model('ChallengeData', challengeDataSchema);
 
-  ChallengeData.newChallenge = function(newData, callback){
+  ChallengeData.newChallengeData = function(newData, callback){
     var challengeData = new ChallengeData(newData);
     challengeData.save(callback);
   };
@@ -40,5 +41,8 @@ module.exports = function(database){
     return ChallengeData.find(query, callback);
   };
 
+  ChallengeData.removeAllData = function(callback){
+    ChallengeData.remove({}, callback);
+  }
   return ChallengeData;
 };

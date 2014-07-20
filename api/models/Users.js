@@ -32,5 +32,9 @@ module.exports = function(database){
     return Users.find({}, callback);
   };
 
+  Users.removeAllUsers = function(callback){
+    //Users.resetCount();
+    Users.remove()
+  }
   return Users;
 };

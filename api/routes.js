@@ -67,6 +67,16 @@ module.exports = [
         }
       }
     }
+  },
+  {
+    path: '/reset/888',
+    method: 'GET',
+    handler: reset
+  },
+  {
+    path: '/populate',
+    method: 'GET',
+    handler: populate
   }
 
 ];
@@ -79,6 +89,7 @@ function defaultFunc(request, reply){
 //called on GET: /users
 function getAllUsers(request, reply){
   Users.getAllUsers(function(err, users){
+    if (!err)
     reply(users);
   })
 }
@@ -87,7 +98,7 @@ function getAllUsers(request, reply){
 function createUser(request, reply){
   Users.newUser(request.params.newUser, function(err, user){
     if (err){
-      console.error.bind(err, "error when inserting new user into db: ");
+      console.error.bind(console, "error when inserting new user into db: ");
     }
     else{
       reply(user);
@@ -114,7 +125,7 @@ function getAllChallenges(request, reply){
 function createChallenge(request, reply){
   Challenges.newChallenge(request.params.newChallenge, function(err, challenge){
     if (err){
-      console.error.bind(err, "error when inserting new user into db: ");
+      console.error.bind(console, "error when inserting new user into db: ");
     }
     else{
       reply(challenge);
@@ -134,4 +145,103 @@ function getEvents(request, reply){
     if (!err)
       reply(response);
   });
+}
+
+//called on GET /reset
+function reset(request, reply){
+  Users.removeAllUsers();
+  Challenges.removeAllChallenges();
+  ChallengeData.removeAllData();
+}
+
+//called on GET /populate
+function populate(request, reply){
+  var testUsers = [
+    {
+      fname: "Johnny",
+      lname: "Rocket",
+    },
+    {
+      fname: "Yolo",
+      lname: "Swag"
+    },
+    {
+      fname: "Tim",
+      lname: "Howard"
+    }
+  ];
+  var testChallenges = [
+    {
+      name: "Sleep for more than 8 hours per day.",
+      description: "Sleep is good for you. Log how many hours you sleep each day.",
+      isPrivate: false,
+      metric: "hours",
+      isActive: true,
+      useTimer: true,
+      category: "Health"
+    },
+    {
+      name: "Walk over 10,000 steps everyday.",
+      description: "Gotta get dat exercise.",
+      isPrivate: false,
+      metric: "steps",
+      isActive: true,
+      useTimer: false,
+      category: "fitness"
+    },
+    {
+      name: "Do your Homework!",
+      description: "Don't get distracted. Do your homework. Log your hours studied everyday.",
+      isPrivate: false,
+      metric: "hours",
+      isActive: true,
+      useTimer: true,
+      category: "work/school"
+    },
+    {
+      name: "Get better at Guitar!",
+      description: "Get better at Guitar by playing everyday!",
+      isPrivate: false,
+      metric: "minutes",
+      isActive: true,
+      useTimer: true,
+      category: "personal"
+    },
+    {
+      name: "Catch up with a friend everyday!",
+      description: "Maintain your relationships!",
+      isPrivate: false,
+      metric: "people",
+      isActive: true,
+      useTimer: false,
+      category: "relationships"
+    }
+  ];
+  var testEvents = [
+    {
+      userId: 0,
+      challengeId: 0,
+      data: 6,
+      description: "Good ass sleep.",
+      date: Date.now()
+    },
+    {
+      userId: 1,
+      challengeId: 0,
+      data: 7.7,
+      description: "Better ass sleep.",
+      date: Date.now()
+    }
+  ];
+
+  for (var i = 0; i < testUsers.length; ++i){
+    Users.newUser(testUsers[i]);
+  }
+  for (var i = 0; i < testChallenges.length; ++i){
+    Challenges.newChallenge(testChallenges[i]);
+  }
+  for (var i = 0; i < testEvents.length; ++i){
+    ChallengeData.newChallengeData(testEvents[i]);
+  }
+
 }

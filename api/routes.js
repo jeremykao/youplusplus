@@ -90,7 +90,7 @@ function defaultFunc(request, reply){
 function getAllUsers(request, reply){
   Users.getAllUsers(function(err, users){
     if (!err)
-    reply(users);
+    reply({data: users});
   })
 }
 
@@ -101,7 +101,7 @@ function createUser(request, reply){
       console.error.bind(console, "error when inserting new user into db: ");
     }
     else{
-      reply(user);
+      reply({data: user});
     }
   });
 }
@@ -109,7 +109,7 @@ function createUser(request, reply){
 function getSingleUser(request, reply){
   Users.getUser(request.params.uid, function(err, user){
     if (!err)
-      reply(user);
+      reply({data: user});
   });
 }
 
@@ -117,7 +117,7 @@ function getSingleUser(request, reply){
 function getAllChallenges(request, reply){
   Challenges.getAllChallenges(function(err, challenges){
     if (!err)
-      reply(challenges);
+      reply({data: challenges});
   })
 }
 
@@ -128,7 +128,7 @@ function createChallenge(request, reply){
       console.error.bind(console, "error when inserting new user into db: ");
     }
     else{
-      reply(challenge);
+      reply({data: challenge});
     }
   });
 }
@@ -136,14 +136,14 @@ function createChallenge(request, reply){
 function getSingleChallenge(request, reply){
   Challenges.getChallenge(request.params.cid, function(err, challenge){
     if (!err)
-      reply(challenge);
+      reply({data: challenge});
   });
 }
 //called on GET: /events?...
 function getEvents(request, reply){
   ChallengeData.getAllChallengesByFilter(request.query, function(err, response){
     if (!err)
-      reply(response);
+      reply({data: response});
   });
 }
 

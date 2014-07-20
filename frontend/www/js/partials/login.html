@@ -1,0 +1,26 @@
+<div class="col-md-10" id="login">
+  <div class="row headlines">
+    <h1>You++</h1>
+    <h4>Be a better you.</h4>
+  </div>
+  <div class="row" data-ng-show="!clickedButton">
+    <button type="button" class="btn btn-default btn-large" data-ng-click="clickSignUp()">{{toggleButtonText}}</button>
+    <button type="button" class="btn btn-default btn-large" data-ng-click="clickLogin()">Login</button>
+  </div>
+  <div class="row loginRow" data-ng-show="clickedButton && !isSigningUp">
+    <input type="email" placeholder="Email Address" />
+    <input type="password" placeholder="Password" /> 
+  </div>
+  <div class="row signupRow" data-ng-show="clickedButton && isSigningUp">
+    <input type="text" placeholder="First Name" />
+    <input type="text" placeholder="Last Name" />
+    <input type="email" placeholder="Email Address" />
+    <input type="password" placeholder="Password" /> 
+  </div>
+  <div class="row" data-ng-show="clickedButton && !isSigningUp">
+    <button type="button" class="btn btn-default btn-large">Login</button>
+  </div>
+  <div class="row" data-ng-show="clickedButton && isSigningUp">
+    <button type="button" class="btn btn-default btn-large">Create Account</button>
+  </div>
+</div>

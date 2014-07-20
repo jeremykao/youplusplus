@@ -12,6 +12,10 @@ yppApp.config(['$routeProvider',
       templateUrl: 'js/partials/inputEvent.html',
       controller: 'InputEventController'
     })
+    .when('/createChallenge', {
+      templateUrl: 'js/partials/createChallenge.html',
+      controller: 'CreateChallengeController'
+    })
   }
 ]);
 

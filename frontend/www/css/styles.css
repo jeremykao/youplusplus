@@ -20,3 +20,22 @@ body {
   font-size: 3rem;
   border-left: 1px solid;
 }
+#createChallengeView {
+  margin: 0 2rem 0 4rem;
+  font-size: 2rem;
+}
+#createChallengeView .row {
+  margin-top: 1.5rem;
+}
+#createChallengeView input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #000;
+}
+#createChallengeView input:focus,
+#createChallengeView textarea:focus {
+  outline: 0;
+}
+#createChallengeView textarea {
+  height: 8rem;
+}

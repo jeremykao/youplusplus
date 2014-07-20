@@ -15,6 +15,7 @@
             <header class="row" id="headerBar" data-ng-controller="HeaderController">
                 <h3 class="">You++</h3>
                 <p class="glyphicon glyphicon-edit" data-ng-click="addEvent()"></p>
+                <p class="glyphicon glyphicon-plus" data-ng-click="createChallenge()"></p>
             </header>
             <div class="row" id="contentContainer" data-ng-view="">
 
@@ -30,9 +31,11 @@
         <script type="text/javascript" src="js/libs/moment.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/resources/UsersResource.js"></script>
+        <script type="text/javascript" src="js/resources/ChallengesResource.js"></script>
         <script type="text/javascript" src="js/controllers/HeaderController.js"></script>
         <script type="text/javascript" src="js/controllers/MainController.js"></script>
         <script type="text/javascript" src="js/controllers/InputEventController.js"></script>
+        <script type="text/javascript" src="js/controllers/CreateChallengeController.js"></script>
         <script type="text/javascript" src="js/services/UserService.js"></script>
         <!-- End Own JavaScript files -->
         <script type="text/javascript" src="cordova.js"></script>

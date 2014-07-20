@@ -1,0 +1,25 @@
+<div class="col-md-10" id="createChallengeView">
+  <div class="row">
+    <h2>Create a New Challenge!</h2>
+  </div>
+  <div class="row">
+      <input type="text" placeholder="Challenge name" data-ng-model="challengeForm.name" />
+  </div>
+  <div class="row">
+      <textarea placeholder="Description" data-ng-model="challengeForm.description"></textarea>
+  </div>
+  <div class="row">
+    <input type="text" placeholder="Metric (e.g. hours)" data-ng-model="challengeForm.metric"/>
+  </div>
+  <div class="row">
+    <label> Category: 
+      <select data-ng-model="challengeForm.category" ng-options="cat for cat in categories"></select>
+    </label>
+  </div>
+  <div class="row">
+    <label>Private? <input type="checkbox" data-ng-model="challengeForm.isPrivate" /></label>
+  </div>
+  <div class="row">
+    <button type="button" class="btn btn-large" data-ng-click="createNewChallenge()">Create Challenge!</button>
+  </div>
+</div>

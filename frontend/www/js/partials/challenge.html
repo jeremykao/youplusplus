@@ -1,0 +1,25 @@
+<div class="col-md-10" id="challenge">
+  <div class="row">
+    <h1>{{challenge.name}}</h1>
+  </div>
+  <div class="row">
+    <h4>Description</h4>
+    <p class="description">{{challenge.description}}</p>
+  </div>
+  <div class="row">
+    <h4>Progress</h4>
+  </div>
+  <div class="row chartRow">
+    <canvas id="myChart"></canvas>
+  </div>
+  <ul>
+    <li data-ng-repeat="uChall in userChallenges" class="row">
+      <p class="dateBlock"><span class="month">{{uChall.month}}</span><span class="day">{{uChall.day}}</span></p>
+
+      <h4 class="metric" data-ng-click="openDesc($event)">{{uChall.data}}&nbsp;{{challenge.metric}}</h4>
+      <div class="col-md-10 charDesc descOff">
+        {{uChall.description}}
+      </div>
+    </li>
+  </ul>
+</div>
